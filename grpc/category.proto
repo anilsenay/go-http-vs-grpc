@@ -1,0 +1,24 @@
+syntax = "proto3";
+package category;
+
+option go_package = "grpc/api";
+
+service CategoryService {
+  rpc GetCategoryTree (CategoryTreeRequest) returns (CategoryTreeResponse);
+}
+
+message CategoryTreeRequest {
+  int32 root = 1;
+}
+
+message CategoryTreeResponse {
+  repeated Category categories = 1;
+}
+
+message Category {
+  int32 id = 1;
+  string name = 2;
+  string url = 3;
+  repeated Category subCategories = 4;
+}
+
