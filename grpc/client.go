@@ -2,7 +2,6 @@ package grpc
 
 import (
 	"context"
-	"fmt"
 
 	"github.com/anilsenay/go-http-vs-grpc/grpc/api"
 
@@ -28,26 +27,11 @@ func NewGrpcClient(requestUrl string) *GrpcClient {
 	}
 }
 
-func (g *GrpcClient) GetCategoryTree() {
-	// start := time.Now()
-
-	_, err := (*g.Client).GetCategoryTree(context.Background(), &api.CategoryTreeRequest{})
+func (g *GrpcClient) GetCategoryTree() (*api.CategoryTreeResponse, error) {
+	resp, err := (*g.Client).GetCategoryTree(context.Background(), &api.CategoryTreeRequest{})
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
 
-	// fmt.Println(len(resp.Categories))
-
-	// if resp != nil {
-	// 	recursivePrint(resp.Categories)
-	// }
-
-	// fmt.Printf("took: %d ns\n", time.Since(start).Nanoseconds())
-}
-
-func recursivePrint(r []*api.Category) {
-	for _, c := range r {
-		fmt.Println(c.Name)
-		recursivePrint(c.SubCategories)
-	}
+	return resp, err
 }

@@ -24,23 +24,21 @@ func BenchmarkServer(b *testing.B) {
 	go grpc_server.Serve()
 	go http_server.Listen()
 
-	var table = []struct {
-		name string
-		f    func()
-	}{
-		{name: "http", f: http_client.SendRequest},
-		{name: "grpc", f: grpc_client.GetCategoryTree},
-	}
+	b.Run("server_http", func(b *testing.B) {
+		start := time.Now()
+		for i := 0; i < b.N; i++ {
+			http_client.SendRequest()
+		}
+		fmt.Printf("\nserver_http: took %d ns \n", time.Since(start))
+	})
 
-	for _, v := range table {
-		b.Run(fmt.Sprintf("server_%s", v.name), func(b *testing.B) {
-			start := time.Now()
-			for i := 0; i < b.N; i++ {
-				v.f()
-			}
-			fmt.Printf("\nserver_%s: took %d ns \n", v.name, time.Since(start))
-		})
-	}
+	b.Run("server_grpc", func(b *testing.B) {
+		start := time.Now()
+		for i := 0; i < b.N; i++ {
+			grpc_client.GetCategoryTree()
+		}
+		fmt.Printf("\nserver_grpc: took %d ns \n", time.Since(start))
+	})
 
 	fmt.Println("closing...")
 	http_server.Shutdown()

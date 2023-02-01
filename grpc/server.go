@@ -12,7 +12,7 @@ import (
 )
 
 // to code generation:
-// cd grpc
+// cd grpc (run next command in this directory)
 // protoc -I=. --go_out=api --go_opt=paths=source_relative --go-grpc_out=api --go-grpc_opt=paths=source_relative category.proto
 
 type GrpcServer struct {
