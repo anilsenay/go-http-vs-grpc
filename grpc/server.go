@@ -3,9 +3,10 @@ package grpc
 import (
 	"context"
 	"fmt"
-	"http-vs-grpc/grpc/api"
 	"log"
 	"net"
+
+	"github.com/anilsenay/go-http-vs-grpc/grpc/api"
 
 	"google.golang.org/grpc"
 )

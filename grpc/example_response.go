@@ -1,6 +1,6 @@
 package grpc
 
-import "http-vs-grpc/grpc/api"
+import "github.com/anilsenay/go-http-vs-grpc/grpc/api"
 
 var ExampleResponse = api.CategoryTreeResponse{
 	Categories: []*api.Category{

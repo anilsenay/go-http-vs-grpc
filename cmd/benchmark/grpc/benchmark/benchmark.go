@@ -1,39 +1,18 @@
-package main
+package benchmark
 
 import (
-	"fmt"
-	config "http-vs-grpc"
-	r "http-vs-grpc/grpc"
-	"os"
-	"strconv"
 	"sync"
 	"time"
+
+	config "github.com/anilsenay/go-http-vs-grpc"
+	r "github.com/anilsenay/go-http-vs-grpc/grpc"
 )
 
-func main() {
+func RunBenchmark(requestNumber, concurrency int) []time.Duration {
 	grpc_server := r.NewGrpcServer(config.RPC_HOST, config.RPC_PORT)
 	grpc_client := r.NewGrpcClient(config.RPC_HOST + ":" + config.RPC_PORT)
 
 	go grpc_server.Serve()
-
-	argsWithoutProg := os.Args[1:]
-
-	var requestNumber int
-	var concurrency int = 1
-
-	r, err := strconv.Atoi(argsWithoutProg[0])
-	if err != nil {
-		panic(err)
-	}
-	requestNumber = r
-
-	if len(argsWithoutProg) >= 2 {
-		c, err := strconv.Atoi(argsWithoutProg[1])
-		if err != nil {
-			panic(err)
-		}
-		concurrency = c
-	}
 
 	var durationPerRequest = make([]time.Duration, requestNumber)
 
@@ -54,5 +33,5 @@ func main() {
 
 	wg.Wait()
 
-	fmt.Println(durationPerRequest)
+	return durationPerRequest
 }

@@ -1,4 +1,4 @@
-module http-vs-grpc
+module github.com/anilsenay/go-http-vs-grpc
 
 go 1.19
 
@@ -8,6 +8,7 @@ require (
 )
 
 require (
+	github.com/go-echarts/go-echarts/v2 v2.2.4 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
 	golang.org/x/net v0.4.0 // indirect
 	golang.org/x/sys v0.3.0 // indirect

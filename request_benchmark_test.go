@@ -2,10 +2,11 @@ package httpvsgrpc
 
 import (
 	"fmt"
-	r "http-vs-grpc/grpc"
-	"http-vs-grpc/http"
 	"testing"
 	"time"
+
+	r "github.com/anilsenay/go-http-vs-grpc/grpc"
+	"github.com/anilsenay/go-http-vs-grpc/http"
 )
 
 // Run via:

@@ -1,8 +1,8 @@
 package main
 
 import (
-	config "http-vs-grpc"
-	r "http-vs-grpc/grpc"
+	config "github.com/anilsenay/go-http-vs-grpc"
+	r "github.com/anilsenay/go-http-vs-grpc/grpc"
 )
 
 func main() {
