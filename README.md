@@ -26,7 +26,7 @@ Last run results:
 
 > Prints time values in array
 
-usage: ` cmd/benchmark/grpc/main.go <number of requests> <number of concurrent request>`
+usage: `go run cmd/benchmark/grpc/main.go <number of requests> <number of concurrent request>`
 
 ```bash
 go run cmd/benchmark/grpc/main.go 1000 20
@@ -36,7 +36,7 @@ go run cmd/benchmark/grpc/main.go 1000 20
 
 > Prints time values in array
 
-usage: ` cmd/benchmark/http/main.go <number of requests> <number of concurrent request>`
+usage: `go run cmd/benchmark/http/main.go <number of requests> <number of concurrent request>`
 
 ```bash
 go run cmd/benchmark/http/main.go 1000 20
